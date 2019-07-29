@@ -6,14 +6,3 @@ class String
 
     end
     
-
-      #result.each_with_index do |num, index|
-   #   if num.include?("32m")
-    #    @AI_guess[index] = num.match(num_match)
-     # elsif num.include?("31m")
-      #  @AI_guess[index] = ([*1..5] - [num.match(num_match)]).sample
-      #elsif num.include?("34m")
-      #  @AI_guess[index] = num.match(num_match)
-      #end
-  #end
-  #return @AI_guess
