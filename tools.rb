@@ -29,26 +29,25 @@ module Tools
     @guess = gets.chomp.to_s.split(//).map{|chr| chr.to_i}
   end
 
-  def check_guess
+  def check_guess(guess, code)
     answers = []
     @result_display = ''
-    @guess.each_with_index do |number, index|
-      if number == @code[index]  
+    guess.each_with_index do |number, index|
+      if number === code[index]
         answers[index] = number.to_s.green
-      else if @code.include?(number)
+      elsif code.include?(number)
         answers[index] = number.to_s.blue
-      else answers[index] = number.to_s.red
+      else answers[index] = number.to_s.red 
       end
     end
-    end
-    @result_display = answers.join
-    puts @result_display 
+  @result_display = answers.join
+  print @result_display
   end
   
   
   def ai_guess
     @guess = []
-   regex = /\\e\[\d+m(\d)\\e\[/
+   regex = /m(\d)/
     
     if @counter < 1
       @guess = get_random
@@ -57,15 +56,17 @@ module Tools
       result_array = @result_display.split("0m")
        print result_array
         result_array.each_with_index do |item, index|
-        
-  
-
-        
+          if item.include?("32m") #green
+            @guess[index] = item.match(regex)[1].to_i
+          elsif item.include?("31m") #red
+            @guess[index] = ([*1..5] - [item.match(regex)[1]]).sample
+          elsif item.include?("34m") #blue
+            @guess[index] = ([*1..5] - [item.match(regex)[1]]).sample
+          else
+          end
         end
      end   
   
   end
-
-
-
 end
+

@@ -28,9 +28,10 @@ include Tools
   def play
     @counter = 0 
     while @counter < 12 do 
+      @guess = []
       get_guess
     break if winner?
-      check_guess
+      check_guess(@guess, @code)
       
     
     
