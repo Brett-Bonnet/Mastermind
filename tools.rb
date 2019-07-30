@@ -48,7 +48,6 @@ module Tools
   def ai_guess
     @guess = []
    regex = /m(\d)/
-    
     if @counter < 1
       @guess = get_random
       print @guess
